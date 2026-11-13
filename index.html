@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>专注日课 · 每日三练</title>
+<meta name="description" content="每天三项专注力训练：舒尔特方格、追踪小球、每日轮换专项。iPhone 可直接使用，可添加到主屏幕。">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="专注日课">
+<meta name="theme-color" content="#070b12">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/app.css?v=2">
+</head>
+<body>
+<div id="shell">
+  <header id="top">
+    <div class="brand"><span class="mark"></span>专注日课</div>
+    <div id="streak" class="streak">—</div>
+  </header>
+
+  <main id="main"></main>
+
+  <nav id="tabs" aria-label="主导航">
+    <button class="tab on" data-tab="today"><span class="ti"></span>今日</button>
+    <button class="tab" data-tab="history"><span class="ti"></span>记录</button>
+    <button class="tab" data-tab="me"><span class="ti"></span>我的</button>
+  </nav>
+</div>
+
+<div id="stage" class="stage" hidden></div>
+
+<script src="assets/app.js?v=2"></script>
+<script>
+  // 本地预览（localhost/127.0.0.1）不注册 Service Worker，避免改代码后读到旧缓存
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if ('serviceWorker' in navigator && !isLocal) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function(){}); });
+  }
+</script>
+</body>
+</html>
